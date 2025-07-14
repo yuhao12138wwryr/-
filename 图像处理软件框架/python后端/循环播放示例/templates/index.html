@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>深度学习算法展示</title>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #495057;
+            --text-color: #212529;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        #current-time {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: right;
+            color: var(--dark-gray);
+            font-weight: 600;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            display: inline-block;
+            float: right;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--medium-gray);
+            clear: both;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button[name="button1"] {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        button[name="button2"] {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        button[name="button3"] {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        button[name="button4"] {
+            background-color: var(--dark-gray);
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .status-text {
+            margin-left: 15px;
+            font-size: 16px;
+            color: var(--text-color);
+            min-width: 150px;
+            padding: 10px 15px;
+            background-color: var(--medium-gray);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        .input-container {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 30px;
+        }
+
+        .message-box, .upload-box {
+            flex: 1;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        #message {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            box-sizing: border-box;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            transition: border 0.3s;
+        }
+
+        #message:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
+        }
+
+        #send, #upload-btn {
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 15px;
+        }
+
+        #files {
+            width: 100%;
+            padding: 10px;
+            border: 1px dashed var(--medium-gray);
+            border-radius: 6px;
+            background-color: var(--light-gray);
+            margin-bottom: 10px;
+        }
+
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 450px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .image-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-grid img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+            object-fit: contain;
+        }
+
+        .image-path {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--dark-gray);
+            word-break: break-all;
+            text-align: center;
+            max-width: 450px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #file-list {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--dark-gray);
+        }
+
+        #file-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #file-list li {
+            padding: 8px;
+            background-color: var(--light-gray);
+            margin-bottom: 5px;
+            border-radius: 4px;
+        }
+
+        .video-container {
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        #video-frame {
+            max-width: 800px;
+            max-height: 600px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .frame-info {
+            margin-top: 15px;
+            font-size: 14px;
+            color: var(--dark-gray);
+            font-weight: 600;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .input-container {
+                flex-direction: column;
+            }
+
+            .image-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="current-time"></div>
+    <h1>文件上传与图像展示</h1>
+
+    <div class="button-container">
+        <form method="post" id="main-form">
+            <button type="submit" name="button1">运行</button>
+            <button type="submit" name="button2">删除装载图像</button>
+            <button type="submit" name="button3">显示缓存中结果</button>
+            <button type="submit" name="button4">结束</button>
+            <div class="status-text">{{ processing_status }}</div>
+        </form>
+    </div>
+
+    <div class="input-container">
+        <div class="message-box">
+            <form id="message-form">
+                <input type="text" id="message" name="message" placeholder="输入传递参数...">
+                <button type="button" id="send">发送</button>
+            </form>
+        </div>
+
+        <div class="upload-box">
+            <form method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="files" id="files" multiple>
+                <div id="file-list"></div>
+                <button type="submit" id="upload-btn">上传文件</button>
+            </form>
+        </div>
+    </div>
+
+    {% if play_video %}
+    <div class="video-container">
+        <img id="video-frame" src="" alt="">
+        <div class="frame-info">
+             <span id="current-frame"></span><span id="total-frames"></span>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="image-grid {% if not show_b_images %}hidden{% endif %}">
+        {% if show_b_images %}
+            {% for img in b_images %}
+            <div class="image-item">
+                <img src="{{ img.data }}" alt="B文件夹图像">
+                <div class="image-path">{{ img.path }}</div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <script>
+        // 获取并显示当前时间
+        function updateCurrentTime() {
+            fetch('/get_current_time')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('current-time').textContent = data.current_time;
+                })
+                .catch(error => {
+                    console.error('获取状态失败:', error);
+                    document.getElementById('current-time').textContent = "状态获取失败";
+                });
+        }
+
+        // 每秒更新一次时间
+        setInterval(updateCurrentTime, 1000);
+
+        // 初始加载时立即获取时间
+        updateCurrentTime();
+
+        // 显示选中的文件列表
+        document.getElementById('files').addEventListener('change', function(e) {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = '';
+
+            if (this.files.length > 0) {
+                const list = document.createElement('ul');
+                for (let i = 0; i < this.files.length; i++) {
+                    const item = document.createElement('li');
+                    item.textContent = this.files[i].name;
+                    list.appendChild(item);
+                }
+                fileList.appendChild(list);
+            }
+        });
+
+        // 处理按钮1点击时的状态显示
+        document.getElementById('main-form').addEventListener('submit', function(e) {
+            const button1 = document.querySelector('button[name="button1"]');
+            if (e.submitter === button1) {
+                const statusText = document.querySelector('.status-text');
+                statusText.textContent = "算法处理中...";
+                statusText.style.backgroundColor = "#fff3cd";
+                statusText.style.color = "#856404";
+
+                // 2秒后更新为"处理完成！"
+                setTimeout(() => {
+                    statusText.textContent = "处理完成！";
+                    statusText.style.backgroundColor = "#d4edda";
+                    statusText.style.color = "#155724";
+                }, 2000);
+            }
+        });
+
+        // 视频播放功能
+        {% if play_video %}
+        function updateFrame() {
+            fetch('/get_frame')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.image_data) {
+                        document.getElementById('video-frame').src = data.image_data;
+                        document.getElementById('current-frame').textContent = "当前帧: " + (data.frame_index + 1) + " / ";
+                        document.getElementById('total-frames').textContent = data.frame_count;
+                    }
+
+                    // 继续请求下一帧
+                    setTimeout(updateFrame, 50); // 每50毫秒检查一次新帧
+                });
+        }
+
+        // 开始播放
+        updateFrame();
+        {% endif %}
+
+        // ============ 新增代码：处理消息发送（不刷新页面） ============
+        document.getElementById('send').addEventListener('click', async function() {
+            const message = document.getElementById('message').value;
+            const btn = this;
+
+            // 禁用按钮防止重复提交
+            btn.disabled = true;
+            btn.textContent = '发送中...';
+
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `message=${encodeURIComponent(message)}`
+                });
+
+                // 更新状态显示
+                const statusText = document.querySelector('.status-text');
+                statusText.textContent = `参数已更新: ${message}`;
+                statusText.style.backgroundColor = "#d4edda";
+                statusText.style.color = "#155724";
+
+            } catch (error) {
+                console.error('发送失败:', error);
+                const statusText = document.querySelector('.status-text');
+                statusText.textContent = "发送失败";
+                statusText.style.backgroundColor = "#f8d7da";
+                statusText.style.color = "#721c24";
+            } finally {
+                // 恢复按钮状态
+                btn.disabled = false;
+                btn.textContent = '发送';
+            }
+        });
+    </script>
+</body>
+</html>

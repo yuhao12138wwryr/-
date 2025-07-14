@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度学习图像算法导航</title>
+    <style>
+        :root {
+            --primary-color: #6C5CE7;
+            --secondary-color: #5649C5;
+            --accent-color: #00CEC9;
+            --light-color: #F8F9FA;
+            --dark-color: #2D3436;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --border-radius: 16px;
+            --box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #dfe6f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .algorithm-container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+            height: 80vh;
+        }
+        
+        .sidebar {
+            width: 350px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            margin-bottom: 25px;
+        }
+        
+        .sidebar-header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-header p {
+            opacity: 0.85;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .search-box {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .search-box input:focus {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .algorithm-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin-right: -10px;
+        }
+        
+        /* 自定义滚动条 */
+        .algorithm-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .algorithm-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .algorithm-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        
+        .algorithm-item {
+            padding: 15px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .algorithm-item-header {
+            display: flex;
+            align-items: center;
+        }
+        
+        .algorithm-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 12px;
+            opacity: 0.9;
+        }
+        
+        .algorithm-name {
+            font-size: 15px;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+        
+        .algorithm-arrow {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s;
+        }
+        
+        .algorithm-details {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 13px;
+            line-height: 1.6;
+            opacity: 0.85;
+            margin-top: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .algorithm-item.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .algorithm-item.active .algorithm-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .algorithm-item.active .algorithm-details {
+            max-height: 500px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .content-area {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .welcome-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .welcome-message {
+            font-size: 16px;
+            color: var(--dark-color);
+            opacity: 0.8;
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 30px;
+        }
+        
+        .selected-algorithm {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin-top: 20px;
+            text-align: left;
+            display: none;
+        }
+        
+        .selected-algorithm h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .selected-algorithm .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .selected-algorithm .param-table th {
+            text-align: left;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+            font-weight: 500;
+        }
+        
+        .selected-algorithm .param-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(108, 92, 231, 0.1);
+            vertical-align: top;
+        }
+        
+        .selected-algorithm .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        @media (max-width: 768px) {
+            .algorithm-container {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: 40vh;
+            }
+            
+            .content-area {
+                padding: 30px 20px;
+            }
+            
+            .welcome-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="algorithm-container">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h1>深度学习图像算法</h1>
+                <p>点击算法查看输入输出格式和所需参数</p>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" placeholder="搜索算法...">
+            </div>
+            
+            <div class="algorithm-list" id="algorithmList">
+                <!-- 算法列表将通过JavaScript动态生成 -->
+            </div>
+        </div>
+        
+        <div class="content-area">
+            <h1 class="welcome-title">深度学习图像算法</h1>
+            <p class="welcome-message">点击左侧算法查看输入输出格式和所需参数</p>
+            
+            <div class="selected-algorithm">
+                <h3 id="selected-algo-name"></h3>
+                <table class="param-table">
+                    <tr>
+                        <th>输入格式:</th>
+                        <td id="input-format"></td>
+                    </tr>
+                    <tr>
+                        <th>输出格式:</th>
+                        <td id="output-format"></td>
+                    </tr>
+                    <tr>
+                        <th>参数:</th>
+                        <td id="parameters"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 算法数据集中管理
+        const algorithms = [
+            {
+                id: 'resnet',
+                name: '图像分类 (ResNet)',
+                icon: '<path d="M4 8V6C4 5.46957 4.21071 4.96086 4.58579 4.58579C4.96086 4.21071 5.46957 4 6 4H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 4H18C18.5304 4 19.0391 4.21071 19.4142 4.58579C19.7893 4.96086 20 5.46957 20 6V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 20H18C18.5304 20 19.0391 19.7893 19.4142 19.4142C19.7893 19.0391 20 18.5304 20 18V16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 18C19.1046 18 20 17.1046 20 16C20 14.8954 19.1046 14 18 14C16.8954 14 16 14.8954 16 16C16 17.1046 16.8954 18 18 18Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6C7.10457 6 8 5.10457 8 4C8 2.89543 7.10457 2 6 2C4.89543 2 4 2.89543 4 4C4 5.10457 4.89543 6 6 6Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: 'RGB图像 (224×224×3)',
+                output: '类别概率向量 (1000维)',
+                params: '预训练权重路径、批大小、学习率'
+            },
+            {
+                id: 'yolo',
+                name: '目标检测 (YOLOv5)',
+                icon: '<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 9H15.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: 'RGB图像 (640×640×3)',
+                output: '边界框列表 [x1,y1,x2,y2,class,conf]',
+                params: '模型版本(yolov5s/m/l/x)、置信度阈值、IOU阈值'
+            },
+            {
+                id: 'unet',
+                name: '语义分割 (UNet)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.93 4.93L9.17 9.17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.83 14.83L19.07 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.83 9.17L19.07 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.83 9.17L18.36 5.64" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.93 19.07L9.17 14.83" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: 'RGB图像 (512×512×3)',
+                output: '分割掩码 (512×512×n_classes)',
+                params: '编码器深度、类别数、损失函数'
+            },
+            {
+                id: 'gan',
+                name: '图像生成 (GAN)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: '噪声向量 (100维) 或条件向量',
+                output: '生成图像 (256×256×3)',
+                params: '生成器架构、判别器架构、噪声维度'
+            },
+            {
+                id: 'facenet',
+                name: '人脸识别 (FaceNet)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 9H15.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: '对齐的人脸图像 (160×160×3)',
+                output: '128维嵌入向量',
+                params: '距离阈值、预训练模型路径'
+            },
+            {
+                id: 'esrgan',
+                name: '超分辨率 (ESRGAN)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: '低分辨率图像 (任意尺寸×3)',
+                output: '高分辨率图像 (4×输入尺寸×3)',
+                params: '放大倍数、模型路径、批大小'
+            },
+            {
+                id: 'openpose',
+                name: '姿态估计 (OpenPose)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 9H15.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: 'RGB图像 (368×368×3)',
+                output: '关键点坐标 (25个关键点×3)',
+                params: '置信度阈值、模型复杂度'
+            },
+            {
+                id: 'openpose111',
+                name: '姿态估计 (OpenPose)1111',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 14C8 14 9.5 16 12 16C14.5 16 16 14 16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 9H9.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 9H15.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: 'RGB图像 (368×368×3)',
+                output: '关键点坐标 (25个关键点×3)',
+                params: '置信度阈值、模型复杂度'
+            },
+            {
+                id: 'dncnn',
+                name: '图像去噪 (DnCNN)',
+                icon: '<path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
+                input: '噪声图像 (任意尺寸×3)',
+                output: '去噪图像 (同输入尺寸×3)',
+                params: '噪声水平、模型深度、批归一化'
+            }
+        ];
+
+        // 渲染算法列表
+        function renderAlgorithmList() {
+            const algorithmList = document.getElementById('algorithmList');
+            
+            algorithms.forEach(algo => {
+                const item = document.createElement('div');
+                item.className = 'algorithm-item';
+                item.dataset.id = algo.id;
+                
+                item.innerHTML = `
+                    <div class="algorithm-item-header">
+                        <svg class="algorithm-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            ${algo.icon}
+                        </svg>
+                        <span class="algorithm-name">${algo.name}</span>
+                        <svg class="algorithm-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="algorithm-details">
+                        <div>输入: ${algo.input}</div>
+                        <div>输出: ${algo.output}</div>
+                        <div>参数: ${algo.params}</div>
+                    </div>
+                `;
+                
+                algorithmList.appendChild(item);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 渲染算法列表
+            renderAlgorithmList();
+            
+            // 处理算法项点击事件
+            document.getElementById('algorithmList').addEventListener('click', function(e) {
+                const item = e.target.closest('.algorithm-item');
+                if (!item) return;
+                
+                // 切换当前项的active状态
+                item.classList.toggle('active');
+                
+                // 获取算法ID
+                const algoId = item.dataset.id;
+                const algo = algorithms.find(a => a.id === algoId);
+                
+                if (algo) {
+                    // 更新右侧显示
+                    document.getElementById('selected-algo-name').textContent = algo.name;
+                    document.getElementById('input-format').textContent = algo.input;
+                    document.getElementById('output-format').textContent = algo.output;
+                    document.getElementById('parameters').textContent = algo.params;
+                    document.querySelector('.selected-algorithm').style.display = 'block';
+                }
+                
+                // 关闭其他展开的项
+                document.querySelectorAll('.algorithm-item').forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 搜索功能
+            const searchInput = document.querySelector('.search-box input');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                document.querySelectorAll('.algorithm-item').forEach(item => {
+                    const algoId = item.dataset.id;
+                    const algo = algorithms.find(a => a.id === algoId);
+                    if (algo && algo.name.toLowerCase().includes(searchTerm)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                        item.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 默认展开第一个算法
+            const firstItem = document.querySelector('.algorithm-item');
+            if (firstItem) {
+                firstItem.click();
+            }
+        });
+    </script>
+</body>
+</html>

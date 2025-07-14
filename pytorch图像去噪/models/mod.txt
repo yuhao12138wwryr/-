@@ -1,0 +1,428 @@
+| 0.000 | -0.078 | 0.090 | 0.025 | torch.Size([64, 1, 3, 3]) | | m_head
+.0.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head
+.0.bias
+| -0.000 | -0.034 | 0.031 | 0.008 | torch.Size([64, 64, 3, 3]) | | m_head1
+.0.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head1
+.0.bias
+| 0.582 | 0.137 | 0.990 | 0.240 | torch.Size([64]) | | m_head1
+.1.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head1
+.1.bias
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head1
+.1.running_mean
+| 1.000 | 1.000 | 1.000 | 0.000 | torch.Size([64]) | | m_head1
+.1.running_var
+| 0.000 | -0.033 | 0.034 | 0.008 | torch.Size([64, 64, 3, 3]) | | m_head2.res
+.0.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head2.res
+.0.bias
+| 0.000 | -0.036 | 0.038 | 0.008 | torch.Size([64, 64, 3, 3]) | | m_head2.res
+.1.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head2.res
+.1.bias
+| 0.000 | -0.034 | 0.034 | 0.008 | torch.Size([64, 64, 3, 3]) | | m_head2.res
+.2.weight
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | m_head2.res
+.2.bias
+| -0.000 | -0.031 | 0.028 | 0.008 | torch.Size([1, 64, 3, 3]) | | m_tail1.weight
+| 0.001 | 0.001 | 0.001 | nan | torch.Size([1]) | | m_tail1.bias
+| -0.000 | -0.025 | 0.025 | 0.008 | torch.Size([1, 64, 3, 3]) | | m_tail.weight
+| 0.000 | 0.000 | 0.000 | nan | torch.Size([1]) | | m_tail.bias
+| -0.001 | -0.093 | 0.096 | 0.026 | torch.Size([64, 1, 3, 3]) | | model
+.0.weight
+| 0.011 | -0.023 | 0.041 | 0.016 | torch.Size([64]) | | model
+.0.bias
+| 0.000 | -0.131 | 0.153 | 0.013 | torch.Size([64, 64, 3, 3]) | | model
+.2.weight
+| -0.000 | -0.003 | 0.001 | 0.001 | torch.Size([64]) | | model
+.2.bias
+| 0.473 | 0.144 | 0.950 | 0.225 | torch.Size([64]) | | model
+.3.weight
+| 0.011 | -0.024 | 0.058 | 0.019 | torch.Size([64]) | | model
+.3.bias
+| 0.001 | -0.022 | 0.066 | 0.016 | torch.Size([64]) | | model
+.3.running_mean
+| 0.000 | 0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.3.running_var
+| -0.000 | -0.075 | 0.067 | 0.013 | torch.Size([64, 64, 3, 3]) | | model
+.5.res
+.0.weight
+| -0.001 | -0.020 | 0.017 | 0.006 | torch.Size([64]) | | model
+.5.res
+.0.bias
+| -0.000 | -0.065 | 0.058 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.5.res
+.1.weight
+| 0.001 | -0.026 | 0.022 | 0.011 | torch.Size([64]) | | model
+.5.res
+.1.bias
+| -0.000 | -0.078 | 0.057 | 0.013 | torch.Size([64, 64, 3, 3]) | | model
+.5.res
+.2.weight
+| 0.007 | -0.019 | 0.040 | 0.013 | torch.Size([64]) | | model
+.5.res
+.2.bias
+| -0.001 | -0.082 | 0.072 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.7.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.7.bias
+| 0.599 | 0.156 | 0.984 | 0.238 | torch.Size([64]) | | model
+.8.weight
+| 0.027 | -0.027 | 0.109 | 0.033 | torch.Size([64]) | | model
+.8.bias
+| -0.033 | -0.189 | 0.126 | 0.084 | torch.Size([64]) | | model
+.8.running_mean
+| 0.009 | 0.001 | 0.018 | 0.003 | torch.Size([64]) | | model
+.8.running_var
+| 0.000 | -0.105 | 0.085 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.10.res
+.0.weight
+| -0.002 | -0.023 | 0.014 | 0.008 | torch.Size([64]) | | model
+.10.res
+.0.bias
+| 0.000 | -0.066 | 0.061 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.10.res
+.1.weight
+| -0.002 | -0.037 | 0.036 | 0.015 | torch.Size([64]) | | model
+.10.res
+.1.bias
+| -0.000 | -0.073 | 0.065 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.10.res
+.2.weight
+| 0.008 | -0.023 | 0.033 | 0.013 | torch.Size([64]) | | model
+.10.res
+.2.bias
+| -0.001 | -0.065 | 0.088 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.12.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.12.bias
+| 0.601 | 0.165 | 0.990 | 0.269 | torch.Size([64]) | | model
+.13.weight
+| 0.034 | -0.038 | 0.142 | 0.041 | torch.Size([64]) | | model
+.13.bias
+| -0.095 | -0.469 | 0.298 | 0.170 | torch.Size([64]) | | model
+.13.running_mean
+| 0.062 | 0.014 | 0.171 | 0.039 | torch.Size([64]) | | model
+.13.running_var
+| 0.000 | -0.069 | 0.094 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.15.res
+.0.weight
+| -0.001 | -0.018 | 0.013 | 0.007 | torch.Size([64]) | | model
+.15.res
+.0.bias
+| 0.000 | -0.074 | 0.076 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.15.res
+.1.weight
+| -0.001 | -0.042 | 0.031 | 0.017 | torch.Size([64]) | | model
+.15.res
+.1.bias
+| -0.000 | -0.075 | 0.072 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.15.res
+.2.weight
+| 0.014 | -0.028 | 0.054 | 0.019 | torch.Size([64]) | | model
+.15.res
+.2.bias
+| -0.000 | -0.059 | 0.109 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.17.weight
+| 0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.17.bias
+| 0.582 | 0.193 | 0.975 | 0.231 | torch.Size([64]) | | model
+.18.weight
+| 0.027 | -0.035 | 0.113 | 0.037 | torch.Size([64]) | | model
+.18.bias
+| -0.059 | -0.292 | 0.268 | 0.118 | torch.Size([64]) | | model
+.18.running_mean
+| 0.059 | 0.010 | 0.171 | 0.044 | torch.Size([64]) | | model
+.18.running_var
+| -0.000 | -0.074 | 0.068 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.20.res
+.0.weight
+| 0.001 | -0.016 | 0.023 | 0.009 | torch.Size([64]) | | model
+.20.res
+.0.bias
+| -0.000 | -0.077 | 0.079 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.20.res
+.1.weight
+| -0.005 | -0.040 | 0.053 | 0.020 | torch.Size([64]) | | model
+.20.res
+.1.bias
+| -0.000 | -0.072 | 0.070 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.20.res
+.2.weight
+| 0.013 | -0.023 | 0.071 | 0.018 | torch.Size([64]) | | model
+.20.res
+.2.bias
+| -0.000 | -0.077 | 0.075 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.22.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.22.bias
+| 0.591 | 0.166 | 0.980 | 0.248 | torch.Size([64]) | | model
+.23.weight
+| 0.025 | -0.049 | 0.118 | 0.036 | torch.Size([64]) | | model
+.23.bias
+| -0.045 | -0.425 | 0.224 | 0.133 | torch.Size([64]) | | model
+.23.running_mean
+| 0.056 | 0.007 | 0.166 | 0.041 | torch.Size([64]) | | model
+.23.running_var
+| 0.000 | -0.091 | 0.100 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.25.res
+.0.weight
+| 0.000 | -0.018 | 0.019 | 0.009 | torch.Size([64]) | | model
+.25.res
+.0.bias
+| -0.000 | -0.080 | 0.087 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.25.res
+.1.weight
+| 0.002 | -0.038 | 0.055 | 0.020 | torch.Size([64]) | | model
+.25.res
+.1.bias
+| 0.000 | -0.078 | 0.083 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.25.res
+.2.weight
+| 0.019 | -0.011 | 0.064 | 0.016 | torch.Size([64]) | | model
+.25.res
+.2.bias
+| -0.000 | -0.062 | 0.073 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.27.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.27.bias
+| 0.523 | 0.141 | 0.960 | 0.227 | torch.Size([64]) | | model
+.28.weight
+| 0.026 | -0.042 | 0.099 | 0.030 | torch.Size([64]) | | model
+.28.bias
+| -0.033 | -0.271 | 0.261 | 0.128 | torch.Size([64]) | | model
+.28.running_mean
+| 0.062 | 0.007 | 0.228 | 0.051 | torch.Size([64]) | | model
+.28.running_var
+| -0.000 | -0.100 | 0.080 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.30.res
+.0.weight
+| -0.001 | -0.020 | 0.015 | 0.007 | torch.Size([64]) | | model
+.30.res
+.0.bias
+| 0.000 | -0.077 | 0.074 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.30.res
+.1.weight
+| 0.002 | -0.035 | 0.048 | 0.019 | torch.Size([64]) | | model
+.30.res
+.1.bias
+| 0.000 | -0.074 | 0.071 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.30.res
+.2.weight
+| 0.017 | -0.012 | 0.046 | 0.014 | torch.Size([64]) | | model
+.30.res
+.2.bias
+| -0.000 | -0.089 | 0.084 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.32.weight
+| 0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.32.bias
+| 0.535 | 0.181 | 0.997 | 0.238 | torch.Size([64]) | | model
+.33.weight
+| 0.027 | -0.037 | 0.100 | 0.032 | torch.Size([64]) | | model
+.33.bias
+| -0.042 | -0.256 | 0.223 | 0.099 | torch.Size([64]) | | model
+.33.running_mean
+| 0.047 | 0.006 | 0.128 | 0.036 | torch.Size([64]) | | model
+.33.running_var
+| 0.000 | -0.105 | 0.123 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.35.res
+.0.weight
+| -0.000 | -0.018 | 0.013 | 0.007 | torch.Size([64]) | | model
+.35.res
+.0.bias
+| -0.000 | -0.074 | 0.073 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.35.res
+.1.weight
+| 0.001 | -0.044 | 0.032 | 0.016 | torch.Size([64]) | | model
+.35.res
+.1.bias
+| -0.000 | -0.094 | 0.093 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.35.res
+.2.weight
+| 0.016 | -0.015 | 0.055 | 0.016 | torch.Size([64]) | | model
+.35.res
+.2.bias
+| -0.000 | -0.063 | 0.063 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.37.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.37.bias
+| 0.565 | 0.143 | 0.993 | 0.271 | torch.Size([64]) | | model
+.38.weight
+| 0.031 | -0.022 | 0.119 | 0.030 | torch.Size([64]) | | model
+.38.bias
+| -0.025 | -0.259 | 0.196 | 0.108 | torch.Size([64]) | | model
+.38.running_mean
+| 0.046 | 0.004 | 0.152 | 0.038 | torch.Size([64]) | | model
+.38.running_var
+| 0.000 | -0.137 | 0.108 | 0.016 | torch.Size([64, 64, 3, 3]) | | model
+.40.res
+.0.weight
+| -0.001 | -0.014 | 0.018 | 0.007 | torch.Size([64]) | | model
+.40.res
+.0.bias
+| 0.000 | -0.076 | 0.079 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.40.res
+.1.weight
+| 0.002 | -0.043 | 0.042 | 0.020 | torch.Size([64]) | | model
+.40.res
+.1.bias
+| 0.000 | -0.103 | 0.114 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.40.res
+.2.weight
+| 0.014 | -0.017 | 0.040 | 0.012 | torch.Size([64]) | | model
+.40.res
+.2.bias
+| -0.000 | -0.067 | 0.080 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.42.weight
+| 0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.42.bias
+| 0.542 | 0.181 | 0.997 | 0.239 | torch.Size([64]) | | model
+.43.weight
+| 0.031 | -0.043 | 0.094 | 0.025 | torch.Size([64]) | | model
+.43.bias
+| -0.046 | -0.328 | 0.178 | 0.092 | torch.Size([64]) | | model
+.43.running_mean
+| 0.053 | 0.003 | 0.211 | 0.045 | torch.Size([64]) | | model
+.43.running_var
+| 0.000 | -0.096 | 0.097 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.45.res
+.0.weight
+| -0.001 | -0.027 | 0.021 | 0.011 | torch.Size([64]) | | model
+.45.res
+.0.bias
+| -0.000 | -0.084 | 0.070 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.45.res
+.1.weight
+| -0.002 | -0.022 | 0.025 | 0.011 | torch.Size([64]) | | model
+.45.res
+.1.bias
+| -0.000 | -0.073 | 0.100 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.45.res
+.2.weight
+| 0.014 | -0.011 | 0.051 | 0.013 | torch.Size([64]) | | model
+.45.res
+.2.bias
+| -0.000 | -0.075 | 0.082 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.47.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.47.bias
+| 0.545 | 0.147 | 0.988 | 0.256 | torch.Size([64]) | | model
+.48.weight
+| 0.026 | -0.040 | 0.099 | 0.026 | torch.Size([64]) | | model
+.48.bias
+| -0.021 | -0.318 | 0.261 | 0.109 | torch.Size([64]) | | model
+.48.running_mean
+| 0.035 | 0.004 | 0.112 | 0.031 | torch.Size([64]) | | model
+.48.running_var
+| 0.000 | -0.096 | 0.077 | 0.015 | torch.Size([64, 64, 3, 3]) | | model
+.50.res
+.0.weight
+| -0.000 | -0.013 | 0.017 | 0.007 | torch.Size([64]) | | model
+.50.res
+.0.bias
+| -0.000 | -0.077 | 0.066 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.50.res
+.1.weight
+| 0.002 | -0.031 | 0.027 | 0.013 | torch.Size([64]) | | model
+.50.res
+.1.bias
+| -0.000 | -0.079 | 0.084 | 0.014 | torch.Size([64, 64, 3, 3]) | | model
+.50.res
+.2.weight
+| 0.012 | -0.015 | 0.045 | 0.011 | torch.Size([64]) | | model
+.50.res
+.2.bias
+| 0.000 | -0.051 | 0.075 | 0.010 | torch.Size([64, 64, 3, 3]) | | model
+.52.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.52.bias
+| 0.552 | 0.138 | 0.981 | 0.246 | torch.Size([64]) | | model
+.53.weight
+| 0.026 | -0.012 | 0.088 | 0.023 | torch.Size([64]) | | model
+.53.bias
+| -0.012 | -0.206 | 0.216 | 0.098 | torch.Size([64]) | | model
+.53.running_mean
+| 0.043 | 0.004 | 0.144 | 0.032 | torch.Size([64]) | | model
+.53.running_var
+| 0.000 | -0.066 | 0.063 | 0.013 | torch.Size([64, 64, 3, 3]) | | model
+.55.res
+.0.weight
+| 0.000 | -0.022 | 0.016 | 0.008 | torch.Size([64]) | | model
+.55.res
+.0.bias
+| 0.000 | -0.050 | 0.052 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.55.res
+.1.weight
+| -0.001 | -0.032 | 0.035 | 0.015 | torch.Size([64]) | | model
+.55.res
+.1.bias
+| -0.000 | -0.046 | 0.046 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.55.res
+.2.weight
+| 0.013 | -0.013 | 0.037 | 0.010 | torch.Size([64]) | | model
+.55.res
+.2.bias
+| 0.000 | -0.046 | 0.065 | 0.010 | torch.Size([64, 64, 3, 3]) | | model
+.57.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.57.bias
+| 0.560 | 0.159 | 0.983 | 0.240 | torch.Size([64]) | | model
+.58.weight
+| 0.024 | -0.035 | 0.073 | 0.022 | torch.Size([64]) | | model
+.58.bias
+| -0.001 | -0.360 | 0.290 | 0.142 | torch.Size([64]) | | model
+.58.running_mean
+| 0.045 | 0.006 | 0.131 | 0.032 | torch.Size([64]) | | model
+.58.running_var
+| -0.000 | -0.070 | 0.072 | 0.012 | torch.Size([64, 64, 3, 3]) | | model
+.60.res
+.0.weight
+| -0.000 | -0.023 | 0.019 | 0.009 | torch.Size([64]) | | model
+.60.res
+.0.bias
+| 0.000 | -0.053 | 0.049 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.60.res
+.1.weight
+| -0.000 | -0.022 | 0.023 | 0.011 | torch.Size([64]) | | model
+.60.res
+.1.bias
+| -0.000 | -0.047 | 0.048 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.60.res
+.2.weight
+| 0.011 | -0.009 | 0.034 | 0.008 | torch.Size([64]) | | model
+.60.res
+.2.bias
+| 0.000 | -0.047 | 0.074 | 0.010 | torch.Size([64, 64, 3, 3]) | | model
+.62.weight
+| -0.000 | -0.000 | 0.000 | 0.000 | torch.Size([64]) | | model
+.62.bias
+| 0.590 | 0.104 | 0.980 | 0.225 | torch.Size([64]) | | model
+.63.weight
+| 0.007 | -0.007 | 0.031 | 0.009 | torch.Size([64]) | | model
+.63.bias
+| -0.003 | -0.539 | 0.297 | 0.143 | torch.Size([64]) | | model
+.63.running_mean
+| 0.080 | 0.013 | 0.257 | 0.055 | torch.Size([64]) | | model
+.63.running_var
+| -0.000 | -0.053 | 0.053 | 0.011 | torch.Size([64, 64, 3, 3]) | | model
+.65.res
+.0.weight
+| 0.001 | -0.008 | 0.009 | 0.004 | torch.Size([64]) | | model
+.65.res
+.0.bias
+| 0.000 | -0.055 | 0.046 | 0.010 | torch.Size([64, 64, 3, 3]) | | model
+.65.res
+.1.weight
+| 0.000 | -0.007 | 0.006 | 0.002 | torch.Size([64]) | | model
+.65.res
+.1.bias
+| 0.000 | -0.043 | 0.043 | 0.010 | torch.Size([64, 64, 3, 3]) | | model
+.65.res
+.2.weight
+| -0.003 | -0.013 | 0.008 | 0.004 | torch.Size([64]) | | model
+.65.res
+.2.bias
+| 0.004 | -0.055 | 0.066 | 0.026 | torch.Size([1, 64, 1, 1]) | | fc1.weight
+| 0.008 | -0.052 | 0.090 | 0.029 | torch.Size([64, 1, 1, 1]) | | fc2.weight

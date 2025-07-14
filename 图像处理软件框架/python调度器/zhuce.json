@@ -1,0 +1,19 @@
+{
+  "必须字段": {
+    "主机ip(不是本机)": "http://127.0.0.1/",
+    "本机名": "用户1"
+  },
+  "扩展算法": {
+    "去噪": {
+    "项目路径":"D:\\C++窗体项目\\图像处理软件框架\\python后端\\循环播放示例\\developer_fun.py",
+      "python解释器路径": "C:\\Users\\Lenovo\\.conda\\envs\\env1\\python.exe"
+  },
+"识别": {
+    "项目路径":"D:\\C++窗体项目\\图像处理软件框架\\python后端\\循环播放示例\\developer_fun.py",
+      "python解释器路径": "C:\\Users\\Lenovo\\.conda\\envs\\env1\\python.exe"
+  }
+
+
+
+  }
+}

@@ -1,0 +1,169 @@
+# Project: 项目3
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o abs.o Angle2.o anyNonFinite.o atan.o diag.o eig.o exp.o fliplr.o isfinite.o ishermitian.o kron.o recip.o relop.o rt_nonfinite.o rtGetInf.o rtGetNaN.o schur.o sort1.o sqrt.o sum.o testangle.o testangle_emxutil.o testangle_initialize.o testangle_rtwutil.o testangle_terminate.o triu.o xdlapy3.o xgehrd.o xgemv.o xgerc.o xhseqr.o xnrm2.o xscal.o xungorghr.o xzgeev.o xzggbak.o xzggbal.o xzggev.o xzgghrd.o xzhgeqz.o xzhseqr.o xzlangeM.o xzlarf.o xzlarfg.o xzlartg.o xzlascl.o xztgevc.o
+LINKOBJ  = main.o abs.o Angle2.o anyNonFinite.o atan.o diag.o eig.o exp.o fliplr.o isfinite.o ishermitian.o kron.o recip.o relop.o rt_nonfinite.o rtGetInf.o rtGetNaN.o schur.o sort1.o sqrt.o sum.o testangle.o testangle_emxutil.o testangle_initialize.o testangle_rtwutil.o testangle_terminate.o triu.o xdlapy3.o xgehrd.o xgemv.o xgerc.o xhseqr.o xnrm2.o xscal.o xungorghr.o xzgeev.o xzggbak.o xzggbal.o xzggev.o xzgghrd.o xzhgeqz.o xzhseqr.o xzlangeM.o xzlarf.o xzlarfg.o xzlartg.o xzlascl.o xztgevc.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -s
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = 项目3.exe
+CXXFLAGS = $(CXXINCS) -Wall -Wextra
+CFLAGS   = $(INCS) -Wall -Wextra
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+abs.o: abs.c
+	$(CC) -c abs.c -o abs.o $(CFLAGS)
+
+Angle2.o: Angle2.c
+	$(CC) -c Angle2.c -o Angle2.o $(CFLAGS)
+
+anyNonFinite.o: anyNonFinite.c
+	$(CC) -c anyNonFinite.c -o anyNonFinite.o $(CFLAGS)
+
+atan.o: atan.c
+	$(CC) -c atan.c -o atan.o $(CFLAGS)
+
+diag.o: diag.c
+	$(CC) -c diag.c -o diag.o $(CFLAGS)
+
+eig.o: eig.c
+	$(CC) -c eig.c -o eig.o $(CFLAGS)
+
+exp.o: exp.c
+	$(CC) -c exp.c -o exp.o $(CFLAGS)
+
+fliplr.o: fliplr.c
+	$(CC) -c fliplr.c -o fliplr.o $(CFLAGS)
+
+isfinite.o: isfinite.c
+	$(CC) -c isfinite.c -o isfinite.o $(CFLAGS)
+
+ishermitian.o: ishermitian.c
+	$(CC) -c ishermitian.c -o ishermitian.o $(CFLAGS)
+
+kron.o: kron.c
+	$(CC) -c kron.c -o kron.o $(CFLAGS)
+
+recip.o: recip.c
+	$(CC) -c recip.c -o recip.o $(CFLAGS)
+
+relop.o: relop.c
+	$(CC) -c relop.c -o relop.o $(CFLAGS)
+
+rt_nonfinite.o: rt_nonfinite.c
+	$(CC) -c rt_nonfinite.c -o rt_nonfinite.o $(CFLAGS)
+
+rtGetInf.o: rtGetInf.c
+	$(CC) -c rtGetInf.c -o rtGetInf.o $(CFLAGS)
+
+rtGetNaN.o: rtGetNaN.c
+	$(CC) -c rtGetNaN.c -o rtGetNaN.o $(CFLAGS)
+
+schur.o: schur.c
+	$(CC) -c schur.c -o schur.o $(CFLAGS)
+
+sort1.o: sort1.c
+	$(CC) -c sort1.c -o sort1.o $(CFLAGS)
+
+sqrt.o: sqrt.c
+	$(CC) -c sqrt.c -o sqrt.o $(CFLAGS)
+
+sum.o: sum.c
+	$(CC) -c sum.c -o sum.o $(CFLAGS)
+
+testangle.o: testangle.c
+	$(CC) -c testangle.c -o testangle.o $(CFLAGS)
+
+testangle_emxutil.o: testangle_emxutil.c
+	$(CC) -c testangle_emxutil.c -o testangle_emxutil.o $(CFLAGS)
+
+testangle_initialize.o: testangle_initialize.c
+	$(CC) -c testangle_initialize.c -o testangle_initialize.o $(CFLAGS)
+
+testangle_rtwutil.o: testangle_rtwutil.c
+	$(CC) -c testangle_rtwutil.c -o testangle_rtwutil.o $(CFLAGS)
+
+testangle_terminate.o: testangle_terminate.c
+	$(CC) -c testangle_terminate.c -o testangle_terminate.o $(CFLAGS)
+
+triu.o: triu.c
+	$(CC) -c triu.c -o triu.o $(CFLAGS)
+
+xdlapy3.o: xdlapy3.c
+	$(CC) -c xdlapy3.c -o xdlapy3.o $(CFLAGS)
+
+xgehrd.o: xgehrd.c
+	$(CC) -c xgehrd.c -o xgehrd.o $(CFLAGS)
+
+xgemv.o: xgemv.c
+	$(CC) -c xgemv.c -o xgemv.o $(CFLAGS)
+
+xgerc.o: xgerc.c
+	$(CC) -c xgerc.c -o xgerc.o $(CFLAGS)
+
+xhseqr.o: xhseqr.c
+	$(CC) -c xhseqr.c -o xhseqr.o $(CFLAGS)
+
+xnrm2.o: xnrm2.c
+	$(CC) -c xnrm2.c -o xnrm2.o $(CFLAGS)
+
+xscal.o: xscal.c
+	$(CC) -c xscal.c -o xscal.o $(CFLAGS)
+
+xungorghr.o: xungorghr.c
+	$(CC) -c xungorghr.c -o xungorghr.o $(CFLAGS)
+
+xzgeev.o: xzgeev.c
+	$(CC) -c xzgeev.c -o xzgeev.o $(CFLAGS)
+
+xzggbak.o: xzggbak.c
+	$(CC) -c xzggbak.c -o xzggbak.o $(CFLAGS)
+
+xzggbal.o: xzggbal.c
+	$(CC) -c xzggbal.c -o xzggbal.o $(CFLAGS)
+
+xzggev.o: xzggev.c
+	$(CC) -c xzggev.c -o xzggev.o $(CFLAGS)
+
+xzgghrd.o: xzgghrd.c
+	$(CC) -c xzgghrd.c -o xzgghrd.o $(CFLAGS)
+
+xzhgeqz.o: xzhgeqz.c
+	$(CC) -c xzhgeqz.c -o xzhgeqz.o $(CFLAGS)
+
+xzhseqr.o: xzhseqr.c
+	$(CC) -c xzhseqr.c -o xzhseqr.o $(CFLAGS)
+
+xzlangeM.o: xzlangeM.c
+	$(CC) -c xzlangeM.c -o xzlangeM.o $(CFLAGS)
+
+xzlarf.o: xzlarf.c
+	$(CC) -c xzlarf.c -o xzlarf.o $(CFLAGS)
+
+xzlarfg.o: xzlarfg.c
+	$(CC) -c xzlarfg.c -o xzlarfg.o $(CFLAGS)
+
+xzlartg.o: xzlartg.c
+	$(CC) -c xzlartg.c -o xzlartg.o $(CFLAGS)
+
+xzlascl.o: xzlascl.c
+	$(CC) -c xzlascl.c -o xzlascl.o $(CFLAGS)
+
+xztgevc.o: xztgevc.c
+	$(CC) -c xztgevc.c -o xztgevc.o $(CFLAGS)

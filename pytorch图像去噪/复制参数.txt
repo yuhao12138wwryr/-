@@ -1,0 +1,78 @@
+import torch
+
+# 加载模型
+model_path = r'D:\denoise\DRNet-main_k\denoising\DRNet25\models\121000_G.pth'
+weights = torch.load(model_path)
+
+# 逐层替换参数
+# 1. trans_block.ln1
+weights['m_tail1.0.trans_block.ln1.weight'] = weights['m_tail.0.trans_block.ln1.weight'].clone()
+weights['m_tail1.0.trans_block.ln1.bias'] = weights['m_tail.0.trans_block.ln1.bias'].clone()
+
+# 2. trans_block.msa
+weights['m_tail1.0.trans_block.msa.relative_position_params'] = weights['m_tail.0.trans_block.msa.relative_position_params'].clone()
+weights['m_tail1.0.trans_block.msa.embedding_layer1.weight'] = weights['m_tail.0.trans_block.msa.embedding_layer1.weight'].clone()
+weights['m_tail1.0.trans_block.msa.embedding_layer1.bias'] = weights['m_tail.0.trans_block.msa.embedding_layer1.bias'].clone()
+weights['m_tail1.0.trans_block.msa.linear1.weight'] = weights['m_tail.0.trans_block.msa.linear1.weight'].clone()
+weights['m_tail1.0.trans_block.msa.linear1.bias'] = weights['m_tail.0.trans_block.msa.linear1.bias'].clone()
+
+# 3. trans_block.ln2
+weights['m_tail1.0.trans_block.ln2.weight'] = weights['m_tail.0.trans_block.ln2.weight'].clone()
+weights['m_tail1.0.trans_block.ln2.bias'] = weights['m_tail.0.trans_block.ln2.bias'].clone()
+
+# 4. trans_block.mlp
+weights['m_tail1.0.trans_block.mlp.0.weight'] = weights['m_tail.0.trans_block.mlp.0.weight'].clone()
+weights['m_tail1.0.trans_block.mlp.0.bias'] = weights['m_tail.0.trans_block.mlp.0.bias'].clone()
+weights['m_tail1.0.trans_block.mlp.2.weight'] = weights['m_tail.0.trans_block.mlp.2.weight'].clone()
+weights['m_tail1.0.trans_block.mlp.2.bias'] = weights['m_tail.0.trans_block.mlp.2.bias'].clone()
+
+# 5. conv1_1
+weights['m_tail1.0.conv1_1.weight'] = weights['m_tail.0.conv1_1.weight'].clone()
+weights['m_tail1.0.conv1_1.bias'] = weights['m_tail.0.conv1_1.bias'].clone()
+
+# 6. conv3d
+weights['m_tail1.0.conv3d.weight'] = weights['m_tail.0.conv3d.weight'].clone()
+weights['m_tail1.0.conv3d.bias'] = weights['m_tail.0.conv3d.bias'].clone()
+
+# 7. conv_block
+weights['m_tail1.0.conv_block.0.weight'] = weights['m_tail.0.conv_block.0.weight'].clone()
+weights['m_tail1.0.conv_block.2.weight'] = weights['m_tail.0.conv_block.2.weight'].clone()
+
+# 8. mamba_layers.0
+weights['m_tail1.0.mamba_layers.0.mixer.A_log'] = weights['m_tail.0.mamba_layers.0.mixer.A_log'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.D'] = weights['m_tail.0.mamba_layers.0.mixer.D'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.in_proj.weight'] = weights['m_tail.0.mamba_layers.0.mixer.in_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.conv1d.weight'] = weights['m_tail.0.mamba_layers.0.mixer.conv1d.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.conv1d.bias'] = weights['m_tail.0.mamba_layers.0.mixer.conv1d.bias'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.x_proj.weight'] = weights['m_tail.0.mamba_layers.0.mixer.x_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.dt_proj.weight'] = weights['m_tail.0.mamba_layers.0.mixer.dt_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.dt_proj.bias'] = weights['m_tail.0.mamba_layers.0.mixer.dt_proj.bias'].clone()
+weights['m_tail1.0.mamba_layers.0.mixer.out_proj.weight'] = weights['m_tail.0.mamba_layers.0.mixer.out_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.norm.weight'] = weights['m_tail.0.mamba_layers.0.norm.weight'].clone()
+weights['m_tail1.0.mamba_layers.0.norm.bias'] = weights['m_tail.0.mamba_layers.0.norm.bias'].clone()
+
+# 9. mamba_layers.1
+weights['m_tail1.0.mamba_layers.1.mixer.A_log'] = weights['m_tail.0.mamba_layers.1.mixer.A_log'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.D'] = weights['m_tail.0.mamba_layers.1.mixer.D'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.in_proj.weight'] = weights['m_tail.0.mamba_layers.1.mixer.in_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.conv1d.weight'] = weights['m_tail.0.mamba_layers.1.mixer.conv1d.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.conv1d.bias'] = weights['m_tail.0.mamba_layers.1.mixer.conv1d.bias'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.x_proj.weight'] = weights['m_tail.0.mamba_layers.1.mixer.x_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.dt_proj.weight'] = weights['m_tail.0.mamba_layers.1.mixer.dt_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.dt_proj.bias'] = weights['m_tail.0.mamba_layers.1.mixer.dt_proj.bias'].clone()
+weights['m_tail1.0.mamba_layers.1.mixer.out_proj.weight'] = weights['m_tail.0.mamba_layers.1.mixer.out_proj.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.norm.weight'] = weights['m_tail.0.mamba_layers.1.norm.weight'].clone()
+weights['m_tail1.0.mamba_layers.1.norm.bias'] = weights['m_tail.0.mamba_layers.1.norm.bias'].clone()
+
+# 10. pcbam_module
+weights['m_tail1.0.pcbam_module.h_cw.weight'] = weights['m_tail.0.pcbam_module.h_cw.weight'].clone()
+weights['m_tail1.0.pcbam_module.h_cw.conv.weight'] = weights['m_tail.0.pcbam_module.h_cw.conv.weight'].clone()
+weights['m_tail1.0.pcbam_module.w_hc.weight'] = weights['m_tail.0.pcbam_module.w_hc.weight'].clone()
+weights['m_tail1.0.pcbam_module.w_hc.conv.weight'] = weights['m_tail.0.pcbam_module.w_hc.conv.weight'].clone()
+weights['m_tail1.0.pcbam_module.c_hw.weight'] = weights['m_tail.0.pcbam_module.c_hw.weight'].clone()
+weights['m_tail1.0.pcbam_module.c_hw.conv.weight'] = weights['m_tail.0.pcbam_module.c_hw.conv.weight'].clone()
+
+# 保存修改后的模型
+torch.save(weights, model_path.replace('.pth', '_modified.pth'))
+
+print("参数逐层复制完成，模型已保存为新的文件。")

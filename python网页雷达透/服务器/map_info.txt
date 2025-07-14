@@ -1,0 +1,3 @@
+image_path:ditu/jindianzhijia1.png
+left_bottom:(0, -1800)
+right_top:(20100, 6600)

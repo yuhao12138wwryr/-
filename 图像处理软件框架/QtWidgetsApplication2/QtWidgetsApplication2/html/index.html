@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>文件上传与图像展示</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .status-text {
+            margin-left: 10px;
+            font-size: 16px;
+            color: #333;
+            min-width: 150px;
+        }
+        .input-container {
+            display: flex;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        .message-box {
+            flex: 1;
+        }
+        .upload-box {
+            flex: 1;
+        }
+        #message {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        #send, #upload-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .image-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 450px;
+        }
+        .image-grid img {
+            max-width: 100%;
+            max-height: 500px;
+            width: auto;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            object-fit: contain;
+        }
+        .image-path {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #666;
+            word-break: break-all;
+            text-align: center;
+            max-width: 450px;
+        }
+        .hidden {
+            display: none;
+        }
+        #file-list {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>文件上传与图像展示</h1>
+
+    <div class="button-container">
+        <form method="post" id="main-form">
+            <button type="submit" name="button1">运行</button>
+            <button type="submit" name="button2">删除装载图像</button>
+            <button type="submit" name="button3">显示缓存中结果</button>
+            <button type="submit" name="button4">按钮4</button>
+            <div class="status-text">{{ processing_status }}</div>
+        </form>
+    </div>
+
+    <div class="input-container">
+        <div class="message-box">
+            <form method="post">
+                <input type="text" id="message" name="message" placeholder="输入传递参数...">
+                <button type="submit" id="send">发送</button>
+            </form>
+        </div>
+
+        <div class="upload-box">
+            <form method="post" enctype="multipart/form-data" id="upload-form">
+                <input type="file" name="files" id="files" multiple>
+                <div id="file-list"></div>
+                <button type="submit" id="upload-btn">上传文件</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="image-grid {% if not show_b_images %}hidden{% endif %}">
+        {% if show_b_images %}
+            {% for img in b_images %}
+            <div class="image-item">
+                <img src="{{ img.data }}" alt="B文件夹图像">
+                <div class="image-path">{{ img.path }}</div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <script>
+        // 显示选中的文件列表
+        document.getElementById('files').addEventListener('change', function(e) {
+            const fileList = document.getElementById('file-list');
+            fileList.innerHTML = '';
+
+            if (this.files.length > 0) {
+                const list = document.createElement('ul');
+                for (let i = 0; i < this.files.length; i++) {
+                    const item = document.createElement('li');
+                    item.textContent = this.files[i].name;
+                    list.appendChild(item);
+                }
+                fileList.appendChild(list);
+            }
+        });
+
+        // 处理按钮1点击时的状态显示
+        document.getElementById('main-form').addEventListener('submit', function(e) {
+            const button1 = document.querySelector('button[name="button1"]');
+            if (e.submitter === button1) {
+                const statusText = document.querySelector('.status-text');
+                statusText.textContent = "算法处理中...";
+
+                // 2秒后更新为"处理完成！"
+                setTimeout(() => {
+                    statusText.textContent = "处理完成！";
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
